@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Didi! ❤️ My Lifeline</title>
+    <!-- Confetti Library -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="stars"></div>
+    <div id="animationOverlay" class="animation-overlay"></div>
+
+    <div class="app-card">
+
+        <!-- ================= PAGE 1 ================= -->
+        <div id="page1" class="page active">
+            <div class="royal-badge">👑 World's Best Sister</div>
+            <h1 class="hero-title">Happy Birthday Didi! ❤️</h1>
+            <p class="hero-subtitle">
+                "Aap mere liye sirf didi nahi ho... Mere har bure waqt ki dhal ho. Aapne har pal mera saath diya hai, no matter aap khud kaisa feel kar rahi ho." ✨
+            </p>
+
+            <p class="tap-hint">Tap buttons below for realistic surprises 👇</p>
+
+            <div class="btn-grid">
+                <button class="glow-btn" onclick="triggerFireworks()">
+                    <span>💥</span> Crackers Blast
+                </button>
+                <button class="glow-btn" onclick="triggerFlowerBouquet()">
+                    <span>💐</span> Flower Bouquet
+                </button>
+                <button class="glow-btn" onclick="triggerChocolateRain()">
+                    <span>🍫</span> Chocolates Explosion
+                </button>
+            </div>
+
+            <button class="nav-btn music-btn" id="musicBtn" onclick="toggleAudio()">
+                🎵 Tap To Play Soft Royal Melody
+            </button>
+
+            <button class="nav-btn" onclick="switchPage(2)">
+                Grand Cake Ceremony 🎂 ➡️
+            </button>
+        </div>
+
+        <!-- ================= PAGE 2 ================= -->
+        <div id="page2" class="page">
+            <h1 class="hero-title">Royal Cake Ceremony 🎂</h1>
+            <p class="hero-subtitle" id="cakeInstruction">
+                Cake cut karne se pehle apni ek pyaari si wish maangein!
+            </p>
+
+            <button class="wish-btn" id="wishTriggerBtn" onclick="openWishModal()">✨ Make a Secret Wish First ✨</button>
+
+            <div class="countdown-display" id="countdown">5</div>
+
+            <!-- 3-TIER LUXURY CAKE -->
+            <div class="cake-stage">
+                <div class="virtual-knife" id="knife" onclick="performCakeCut()">🔪</div>
+                
+                <div class="real-candle">
+                    <div class="smoke" id="smoke"></div>
+                    <div class="real-flame" id="flame"></div>
+                </div>
+
+                <div class="tier tier-top">
+                    <div class="frosting"></div>
+                    <div class="cherry"></div>
+                </div>
+                <div class="tier tier-mid">
+                    <div class="frosting"></div>
+                </div>
+                <div class="tier tier-bot">
+                    <div class="cake-cut-line" id="cutLine"></div>
+                </div>
+            </div>
+
+            <button class="nav-btn" id="startBlowBtn" onclick="startCandleSequence()" style="display: none;">
+                🕯️ Blow Candles (Voice Countdown)
+            </button>
+
+            <button class="nav-btn hidden" id="nextToNoteBtn" onclick="switchPage(3)">
+                Read My Heartfelt Note 💌 ➡️
+            </button>
+        </div>
+
+        <!-- ================= PAGE 3 ================= -->
+        <div id="page3" class="page">
+            <h1 class="hero-title">From My Heart To Yours 💖</h1>
+            
+            <div class="letter-container">
+                <div class="letter-quote">"To the world you might be one person, but to me you are my entire universe."</div>
+                <div class="letter-body">
+                    Didi, chahe kitna bhi mushkil time aaya ho, aapne hamesha meri baat pehle suni hai. 
+                    Main jab bhi sad hota hoon, aap bina kisi wajah ke mujhe khush karne mein lag jaati ho. 
+                    <br><br>
+                    No matter aap khud kitna low feel kar rahi ho, aapne kabhi mere mizaaj par uska asar nahi padne diya. Aap mere har dukh ki medicine ho. Thank you for everything! 💕
+                </div>
+            </div>
+
+            <button class="nav-btn" onclick="switchPage(4)">
+                Open Your Birthday Gifts 🎁 ➡️
+            </button>
+        </div>
+
+        <!-- ================= PAGE 4 ================= -->
+        <div id="page4" class="page">
+            <h1 class="hero-title">Your Birthday Surprises 🎁</h1>
+            <p class="hero-subtitle">Har luxury box par tap karke unbox karein!</p>
+
+            <div class="gifts-container">
+                <div class="gift-box" onclick="openGift(this)">
+                    <div class="gift-icon">🍫</div>
+                    <div class="gift-title">Luxury Chocolates</div>
+                    <div class="gift-reveal">Unlimited Silk & Ferrero Rocher Hampers 🍫💖</div>
+                </div>
+                <div class="gift-box" onclick="openGift(this)">
+                    <div class="gift-icon">👗</div>
+                    <div class="gift-title">Designer Dresses</div>
+                    <div class="gift-reveal">Exquisite Traditional & Western Outfits 👗✨</div>
+                </div>
+                <div class="gift-box" onclick="openGift(this)">
+                    <div class="gift-icon">👡</div>
+                    <div class="gift-title">Trendy Heels</div>
+                    <div class="gift-reveal">Royal Footwear & Sandals Collection 👡👠</div>
+                </div>
+                <div class="gift-box" onclick="openGift(this)">
+                    <div class="gift-icon">👜</div>
+                    <div class="gift-title">Premium Purse</div>
+                    <div class="gift-reveal">Classy Designer Leather Handbag 👜🎀</div>
+                </div>
+            </div>
+
+            <div class="grand-final-card">
+                <h2>✨ ENJOY YOUR SPECIAL DAY, DIDI! ✨</h2>
+                <p>May your year be filled with endless smiles, peace, and health! ❤️</p>
+            </div>
+
+            <button class="nav-btn" onclick="switchPage(1)">
+                🔄 Restart Experience
+            </button>
+        </div>
+
+    </div>
+
+    <!-- Make A Wish Modal -->
+    <div class="wish-modal" id="wishModal">
+        <div class="modal-content">
+            <h2>✨ Make A Special Wish ✨</h2>
+            <p>Close your eyes, think of something you truly desire, and type it below:</p>
+            <textarea id="wishInput" placeholder="Write your secret wish here..."></textarea>
+            <button class="nav-btn" onclick="saveWish()">Save Wish & Continue 🕯️</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
